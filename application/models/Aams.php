@@ -17,7 +17,7 @@ class Aams extends CI_Model {
         $this->db->from('trx_app_hit A');
         $this->db->join('trx_app_link B', 'A.app_link_id = B.id');
         $this->db->join('mtd_apps C', 'B.app_id = C.id');
-        $this->db->order_by('C.name', 'ASC');
+	$this->db->order_by('A.id', 'DESC');
         $this->db->limit($limit, 0);
         $result = $this->db->get();
     

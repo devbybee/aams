@@ -19,8 +19,12 @@ class Dashboard extends MY_Controller {
 	public function reload_data() {
 		$limit = $this->aams->get_total();
 		// echo $limit;
-		$data['monit'] = $this->aams->get_dashboard($limit);
+		$data_dash = $this->aams->get_dashboard($limit);
 		
+		usort($data_dash, function($a, $b) {
+   		    return $a['name'] <=> $b['name'];
+		});	
+		$data['monit'] = $data_dash;	
 		return $this->load->view('data_dashboard', $data);
 	}
 
